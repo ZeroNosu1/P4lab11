@@ -1,0 +1,20 @@
+services:
+ db:
+   image: postgres:latest
+   environment:
+     POSTGRES_USER: satang
+     POSTGRES_PASSWORD: 12345z
+     POSTGRES_DB: mydatabase
+   ports:
+     - "5432:5432"
+   volumes:
+     - postgres_data:/var/lib/postgresql/data
+ adminer:
+   image: adminer:latest
+   ports:
+     - "8080:8080"
+   depends_on:
+     - db
+ 
+volumes:
+  postgres_data:
